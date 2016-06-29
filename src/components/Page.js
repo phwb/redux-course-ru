@@ -1,19 +1,30 @@
 import React, { PropTypes, Component } from 'react';
 
-class Page extends Component {
-  propTypes = {
+export default class Page extends Component {
+
+  static propTypes = {
     photos: PropTypes.array.isRequired,
-    year: PropTypes.number.isRequired
+    year: PropTypes.number.isRequired,
+    setYear: PropTypes.func.isRequired
   };
+
+  onYearBtnClick(e) {
+    this.props.setYear(+e.target.innerHTML);
+  }
 
   render() {
     const { photos, year } = this.props;
-    return (
+    return(
       <div>
-        <p>You have {photos.length} for {year} year. This is SPARTA!</p>
+        <p>
+          <button onClick={::this.onYearBtnClick}>2016</button>
+          <button onClick={::this.onYearBtnClick}>2015</button>
+          <button onClick={::this.onYearBtnClick}>2014</button>
+        </p>
+        <h3>{year} year</h3>
+        <p>You have {photos.length} photos.</p>
       </div>
     );
   }
+  
 }
-
-export default Page;
