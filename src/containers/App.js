@@ -9,12 +9,12 @@ class App extends Component {
   render() {
     let { props } = this;
     const { user, page } = props;
-    const { setYear } = props.pageActions;
+    const { setYear, getPhotos } = props.pageActions;
 
     return (
       <div>
         <User {...user} />
-        <Page {...page} setYear={setYear} />
+        <Page {...page} setYear={setYear} getPhotos={getPhotos} />
       </div>
     );
   }
